@@ -18,83 +18,65 @@ function navCheck(entries) {
 
 
 
-
-
-// light/dark mode
-
-// const themeToggle = document.querySelector('.theme-btn');
-
-// themeToggle.addEventListener('click', function () {
-//     document.body.classList.toggle('light-mode');
-
-//     var theme;
-
-//     if (document.body.classList.contains('light-mode')) {
-//         theme = 'light';
-//         themeToggle.firstElementChild.className = 'fa fa-moon';
-//     }
-
-//     else {
-//         theme = 'dark';
-//         themeToggle.firstElementChild.className = 'fa fa-sun';
-//     }
-
-//     localStorage.setItem('theme', JSON.stringify(theme));
-// })
-
-// let getTheme = JSON.parse(localStorage.getItem('theme'));
-
-// if (getTheme === 'light') {
-//     document.body.classList = 'light-mode';
-//     themeToggle.firstElementChild.className = 'fa fa-moon';
-// }
-
-// const themeToggle = document.querySelector('.theme-btn');
-
-
-// themeToggle.addEventListener('click', ()=> {
-//     document.body.classList.toggle('light-mode');
-
-//     if (document.body.classList.contains('light-mode')) {
-//         themeToggle.firstElementChild.className = 'fa fa-moon';
-//         localStorage.setItem('theme', JSON.stringify('light-mode'));
-//     }
-
-//     else {
-//         themeToggle.firstElementChild.className = 'fa fa-sun';
-//         localStorage.setItem('theme', JSON.stringify('root'));
-//     }
-// });
-
-work = [
+const work = [
     {
-        'quantity': '560+',
-        'project': 'projects completed',
+        'quantity': '6',
+        'project': '年のWeb業界経験',
     },
     {
-        'quantity': '10+',
-        'project': 'years of experience',
+        'quantity': '200',
+        'project': 'サイト制作実績',
     },
     {
-        'quantity': '300+',
-        'project': 'satisfied customers',
+        'quantity': '120',
+        'project': 'リピーター顧客数',
     },
     {
-        'quantity': '400+',
-        'project': 'execellent reviews',
+        'quantity': '100',
+        'project': '高評価レビュー',
     }
 ]
 const about = document.querySelector('.right-about')
 for (let i = 0; i < work.length; i++) {
     about.innerHTML += `<div class="about-item">
     <div class="about-text">
-        <p class="lg-text">${work[i].quantity}</p>
+        <p class="lg-text counter" data-value="${work[i].quantity}">0</p>
         <p class="sm-text toUpper">${work[i].project}</p>
     </div>
-</div>`
+</div>`;
 }
+const counters = document.querySelectorAll('.counter');
+let CounterObserver = new IntersectionObserver(
+    (entries, observer) => {
+        let [entry] = entries;
+        if (!entry.isIntersecting) return;
 
-skills = [
+        // console.log('intersecting');
+        let speed = 200;
+        counters.forEach((counter, index) => {
+            function UpdateCounter() {
+                const target = +counter.dataset.value;
+                const start = +counter.innerText;
+                const increment = target / speed;
+                if (start < target) {
+                    counter.innerText = Math.ceil(start + increment);
+                    setTimeout(UpdateCounter, 20);
+                }
+                else {
+                    counter.innerText = target + '+';
+                }
+            }
+            UpdateCounter();
+        });
+        observer.unobserve(about);
+    },
+    {
+        threshold: .5,
+    }
+);
+CounterObserver.observe(about);
+
+const skills = [
     {
         'name': 'html',
         'tool': 'HTML5',
@@ -114,6 +96,16 @@ skills = [
         'name': 'wp',
         'tool': 'Wordpress',
         'progress': '82%'
+    },
+    {
+        'name': 'jquery',
+        'tool': 'jQuery',
+        'progress': '80%'
+    },
+    {
+        'name': 'bootstrap',
+        'tool': 'Bootstrap',
+        'progress': '90%'
     },
 ]
 const progress = document.querySelector('.progress-bars');
@@ -142,42 +134,30 @@ function callBack(entries) {
 
 
 
-experience = [
+const experience = [
     {
         'year': '2019-今',
-        'role': 'Webディレクター',
+        'role': 'Webデザイナー・コーダー',
         'company': 'Nicrosoft',
-        'brief': 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex, ipsa!'
+        'brief': 'デザインに合わせてHtml/Css/Javascriptを用いたコーディングを行いました。'
     },
     {
         'year': '2017-2019',
-        'role': 'Webエンジニア',
-        'company': 'Nicrosoft',
-        'brief': 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex, ipsa!'
-    },
-    {
-        'year': '2013-2017',
         'role': 'Webデザイナー',
-        'company': 'Nicrosoft',
-        'brief': 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex, ipsa!'
-    },
-    {
-        'year': '2010-2013',
-        'role': 'グラッフィックデザイナー',
         'company': 'LIME',
-        'brief': 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex, ipsa!'
+        'brief': 'ユーザーのリサーチからWebサイトの企画、デザイン、ワイヤーフレームの作成まで行いました。'
     },
     {
-        'year': '2009-2010',
+        'year': '2016-2017',
         'role': 'インターン',
         'company': 'Amazom',
-        'brief': 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex, ipsa!'
+        'brief': 'Photoshop/Illustratorを使ったWebサイトやアプリのデザインの企画・設計・実装を行いました。'
     },
     {
-        'year': '2005-2009',
-        'role': 'Computer Science',
-        'company': 'Gokyo University',
-        'brief': 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex, ipsa!'
+        'year': '2012-2016',
+        'role': 'コンピューターサイエンス',
+        'company': '東京大学',
+        'brief': 'コンピューターの仕組みに関して学習しました。システムの構築や制御などを研究し、人の生活に役立てるための応用的研究を行いました。'
     },
 ]
 
@@ -197,38 +177,54 @@ for (let i = 0; i < experience.length; i++) {
 
 const portfolio = [
     {
-        'language': 'html, css, javascript',
+        'language': 'Html, Css, Javascript',
         'img': 'img/p1.jpeg',
-        'title': 'Portfolio Title',
+        'title': 'レスポンシブWebデザイン',
     },
     {
-        'language': 'html, css, bootstrap, javascript',
+        'language': 'Html, Css, Javascript, Bootstrap',
         'img': 'img/p2.webp',
-        'title': 'Portfolio Title',
+        'title': 'ホームページの更新・修正',
     },
     {
-        'language': 'html, css, javascript,jQuery',
+        'language': 'Html, Css, Javascript,jQuery',
         'img': 'img/p3.jpeg',
-        'title': 'Portfolio Title',
+        'title': 'デザインカンプ',
     },
     {
         'language': 'Photoshop, Illustrator, AdobeXD',
         'img': 'img/p4.webp',
-        'title': 'Portfolio Title',
+        'title': 'ランディングページ',
     },
     {
-        'language': 'Photoshop, Illustrator, AdobeXD',
-        'img': 'img/p5.webp',
-        'title': 'Portfolio Title',
+        'language': 'Photoshop, Illustrator',
+        'img': 'img/p5.jpeg',
+        'title': 'Web素材の作成',
     },
     {
         'language': 'Photoshop, Illustrator, AdobeXD',
         'img': 'img/p6.webp',
-        'title': 'Portfolio Title',
+        'title': 'ホームページのリニュアル',
+    },
+    {
+        'language': 'Html, Css, Javascript',
+        'img': 'img/p7.jpeg',
+        'title': 'コーディング',
+    },
+    {
+        'language': 'Html, Css, Javascript, Wordpress, PHP',
+        'img': 'img/p8.jpeg',
+        'title': 'Wordpressテーマの構築・導入',
+    },
+    {
+        'language': 'Photoshop, Illustrator, Lightroom',
+        'img': 'img/p9.jpeg',
+        'title': 'バナー広告',
     },
 ]
 
 const portfolioContainer = document.querySelector('.portfolio-container');
+
 for (let i = 0; i < portfolio.length; i++) {
     portfolioContainer.innerHTML += `<div class="portfolio-item txt-ctr">
     <div class="hovertext" data-hover="${portfolio[i].language}">
@@ -240,43 +236,45 @@ for (let i = 0; i < portfolio.length; i++) {
 
 const service = [
     {
-        'img': 'img/s1.webp',
-        'title': ' Webデザイン',
-        'sum': 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident, quo!'
+        'img': 'img/s1.jpeg',
+        'title': ' ホームページ・LPデザイン',
+        'sum': 'HPの作成はもちろん、修正・更新も対応しております。'
     },
     {
         'img': 'img/s2.jpeg',
         'title': 'コーディング',
-        'sum': 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident, quo!'
+        'sum': 'デザイン通りにレスポンシブコーディングします。'
     },
     {
-        'img': 'img/s3.jpeg',
+        'img': 'img/s3.webp',
         'title': 'バナー広告',
-        'sum': 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident, quo!'
+        'sum': 'バナー広告、ヘッダーなど様々なサイズや用途で制作いたします。'
     },
     {
-        'img': 'img/s4.jpeg',
+        'img': 'img/s4.avif',
         'title': '写真・ビデオ編集',
-        'sum': 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident, quo!'
+        'sum': 'WebやSNS用の写真またビデオ素材を作成いたします。'
     },
     {
-        'img': 'img/s5.jpeg',
+        'img': 'img/s5.avif',
         'title': 'Wordpressテーマ',
-        'sum': 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident, quo!'
+        'sum': 'Wordpressテーマを修正・カスタマイズいたします。'
     },
     {
         'img': 'img/s6.jpeg',
         'title': 'コンサルティング',
-        'sum': 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident, quo!'
+        'sum': 'Web全般のお悩みを気軽にご相談ください。'
     },
 ]
 const serviceContainer = document.querySelector('.service-container');
 for (let i = 0; i < service.length; i++) {
     serviceContainer.innerHTML += `<div class="service-item txt-ctr">
     <img src="${service[i].img}" alt="">
+    <div class="desc">
     <h4>${service[i].title}</h4>
     <p>${service[i].sum}</p>
-    <a href="">Click to read more</a>
+    <a href="#contact">お問い合せへ</a>
+    </div>
 </div>`
 }
 
@@ -291,6 +289,7 @@ sections.forEach(section => {
 function reveal(entries) {
     entries.forEach(entry => {
         entry.target.classList.add('reveal', entry.isIntersecting);
+        // observer.unobserve(entry.target);
     })
 }
 
