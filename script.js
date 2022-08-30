@@ -262,7 +262,7 @@ const service = [
         'sum': 'Web広告やSNS、SEOなどでのWeb集客、売り上げUPをサポートいたします。'
     },
     {
-        'img': 'img/s5.avif',
+        'img': 'img/s5.webp',
         'title': 'Wordpressテーマ',
         'sum': 'Wordpressテーマを修正・カスタマイズいたします。'
     },
