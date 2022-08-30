@@ -190,7 +190,7 @@ const portfolio = [
     {
         'language': 'Html, Css, Javascript, Bootstrap',
         'img': 'img/p2.webp',
-        'title': 'ホームページの更新・修正',
+        'title': 'UI・UXデザイン',
     },
     {
         'language': 'Html, Css, Javascript,jQuery',
@@ -257,9 +257,9 @@ const service = [
         'sum': 'バナー広告、ヘッダーなど様々なサイズや用途で制作いたします。'
     },
     {
-        'img': 'img/s4.avif',
-        'title': '写真・ビデオ編集',
-        'sum': 'WebやSNS用の写真またビデオ素材を作成いたします。'
+        'img': 'img/s4.jpeg',
+        'title': 'Webマーケティング・SEO',
+        'sum': 'Web広告やSNS、SEOなどでのWeb集客、売り上げUPをサポートいたします。'
     },
     {
         'img': 'img/s5.avif',
