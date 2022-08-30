@@ -60,7 +60,7 @@ let CounterObserver = new IntersectionObserver(
                 const increment = target / speed;
                 if (start < target) {
                     counter.innerText = Math.ceil(start + increment);
-                    setTimeout(UpdateCounter, 20);
+                    setTimeout(UpdateCounter, 10);
                 }
                 else {
                     counter.innerText = target + '+';
@@ -136,28 +136,34 @@ function callBack(entries) {
 
 const experience = [
     {
-        'year': '2019-今',
-        'role': 'Webデザイナー・コーダー',
-        'company': 'Nicrosoft',
-        'brief': 'デザインに合わせてHtml/Css/Javascriptを用いたコーディングを行いました。'
+        'year': '2020-今',
+        'role': 'Webディレクター',
+        'company': 'Mericori',
+        'brief': 'Webサイトの企画立案や制作、運用や更新等全般業務に関わる。また、制作チームのマネジメントや仕事の指揮も。'
     },
     {
-        'year': '2017-2019',
+        'year': '2018-2020',
+        'role': 'Webデザイナー・ディレクター',
+        'company': 'Nicrosoft',
+        'brief': 'クライアントの要望・課題のヒアリング、企画提案、見積もりや予算管理、スケジュールの進行管理、運用更新などを行いました。'
+    },
+    {
+        'year': '2016-2018',
         'role': 'Webデザイナー',
         'company': 'LIME',
         'brief': 'ユーザーのリサーチからWebサイトの企画、デザイン、ワイヤーフレームの作成まで行いました。'
     },
     {
-        'year': '2016-2017',
+        'year': '2015-2016',
         'role': 'インターン',
         'company': 'Amazom',
         'brief': 'Photoshop/Illustratorを使ったWebサイトやアプリのデザインの企画・設計・実装を行いました。'
     },
     {
-        'year': '2012-2016',
+        'year': '2011-2015',
         'role': 'コンピューターサイエンス',
         'company': '東京大学',
-        'brief': 'コンピューターの仕組みに関して学習しました。システムの構築や制御などを研究し、人の生活に役立てるための応用的研究を行いました。'
+        'brief': 'コンピューターの仕組みに関して学習し、システムの構築や制御などを研究し、人の生活に役立てるための応用的研究を行いました。'
     },
 ]
 
