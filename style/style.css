@@ -127,7 +127,7 @@ section.reveal div {
 @-webkit-keyframes scale-in-ver-center {
   0% {
     transform: scaleY(0);
-    opacity: 1;
+    opacity: 0;
   }
   100% {
     transform: scaleY(1);
@@ -569,6 +569,7 @@ i:hover {
   box-shadow: var(--box-shadow-1);
   cursor: pointer;
   overflow: hidden;
+  position: relative;
 }
 .service-container .service-item *:not(:first-child) {
   padding: 1rem 0;

@@ -173,7 +173,7 @@
 
 
     <div class="theme-btn">
-        <i class="fa-solid fa-circle-half-stroke"></i>
+        <i class="fa-solid fa fa-sun"></i>
     </div>
 
 
@@ -182,6 +182,10 @@
         <i class="fa-solid fa-chevron-up"></i>
     </div>
     <script>
+
+        icon = JSON.parse(localStorage.getItem('icon')) || [];
+        document.querySelector('.theme-btn').firstElementChild.className = icon;
+
         const themeToggle = document.querySelector('.theme-btn');
         themeToggle.addEventListener('click', () => {
             document.body.classList.toggle('light-mode');
@@ -189,11 +193,13 @@
             if (document.body.classList.contains('light-mode')) {
                 themeToggle.firstElementChild.className = 'fa fa-moon';
                 localStorage.setItem('theme', JSON.stringify('light-mode'));
+                localStorage.setItem('icon', JSON.stringify('fa fa-moon'));
             }
 
             else {
                 themeToggle.firstElementChild.className = 'fa fa-sun';
                 localStorage.setItem('theme', JSON.stringify('root'));
+                localStorage.setItem('icon', JSON.stringify('fa fa-sun'));
             }
         });
 

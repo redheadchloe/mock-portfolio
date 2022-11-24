@@ -1,21 +1,21 @@
 // nav highlight
 
-let navObserver = new IntersectionObserver(navCheck);
-const sections = document.querySelectorAll('section');
-sections.forEach(section => {
-    navObserver.observe(section);
-});
 
-function navCheck(entries) {
+const sections = document.querySelectorAll('section');
+
+let navObserver = new IntersectionObserver(entries => {
     entries.forEach(entry => {
+        console.log(entry);
         const secName = entry.target.id;
         const activeNav = document.querySelector(`[data-id=${secName}]`);
 
         activeNav.classList.toggle('active-btn', entry.isIntersecting);
     });
-}
+})
 
-
+sections.forEach(section => {
+    navObserver.observe(section);
+});
 
 
 const work = [
@@ -48,12 +48,11 @@ for (let i = 0; i < work.length; i++) {
 const counters = document.querySelectorAll('.counter');
 let CounterObserver = new IntersectionObserver(
     (entries, observer) => {
-        let [entry] = entries;
-        if (!entry.isIntersecting) return;
+        // let [entry] = entries;
+        // if (!entry.isIntersecting) return;
 
-        // console.log('intersecting');
         let speed = 200;
-        counters.forEach((counter, index) => {
+        counters.forEach(counter => {
             function UpdateCounter() {
                 const target = +counter.dataset.value;
                 const start = +counter.innerText;
@@ -120,17 +119,19 @@ for (let i = 0; i < skills.length; i++) {
     </div>
 </div>`
 }
-let progressObserver = new IntersectionObserver(callBack);
+
+
 const stats = document.querySelectorAll('.stat');
-stats.forEach(stat => {
-    progressObserver.observe(stat);
-})
-function callBack(entries) {
+
+let progressObserver = new IntersectionObserver(entries => {
     entries.forEach(entry => {
         entry.target.classList.toggle('active', entry.isIntersecting)
     })
 }
-
+)
+stats.forEach(stat => {
+    progressObserver.observe(stat);
+})
 
 
 
@@ -286,20 +287,20 @@ for (let i = 0; i < service.length; i++) {
 
 
 
-let observer = new IntersectionObserver(reveal);
+
+
+
+
+let observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        entry.target.classList.toggle('reveal', entry.isIntersecting);
+        // observer.unobserve(entry.target);
+    })
+})
 
 sections.forEach(section => {
     observer.observe(section);
 })
-
-function reveal(entries) {
-    entries.forEach(entry => {
-        entry.target.classList.add('reveal', entry.isIntersecting);
-        // observer.unobserve(entry.target);
-    })
-}
-
-
 
 
 // footer get year

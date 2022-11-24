@@ -83,7 +83,7 @@ img {
     --clr-primary: #191d2b;
     --clr-secondary: #407BFF;
     --clr-black: #333;
-    -clr-white: #fff;
+    --clr-white: #fff;
     --primary-text: #f8f8f8;
     --placeholder: rgba(200, 200, 200, 0.2);
     --progress: #454e56;
@@ -136,7 +136,7 @@ section.reveal div {
 @keyframes scale-in-ver-center {
     0% {
         transform: scaleY(0);
-        opacity: 1;
+        opacity: 0;
     }
 
     100% {
@@ -640,6 +640,7 @@ i:hover {
         box-shadow: var(--box-shadow-1);
         cursor: pointer;
         overflow: hidden;
+        position: relative;
 
         & *:not(:first-child) {
             padding: 1rem 0;
