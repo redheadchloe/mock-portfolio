@@ -14,7 +14,7 @@
 <body class="main-content">
     <script>
         theme = JSON.parse(localStorage.getItem('theme')) || [];
-        document.body.classList = theme;
+        document.body.classList = theme.name;
     </script>
     <main>
         <section class="section sec1 home" id="home">
@@ -183,23 +183,47 @@
     </div>
     <script>
 
-        icon = JSON.parse(localStorage.getItem('icon')) || [];
-        document.querySelector('.theme-btn').firstElementChild.className = icon;
+        document.querySelector('.theme-btn').firstElementChild.className = (theme.icon);
+
+
 
         const themeToggle = document.querySelector('.theme-btn');
+        // themeToggle.addEventListener('click', () => {
+        //     document.body.classList.toggle('light-mode');
+
+        //     if (document.body.classList.contains('light-mode')) {
+        //         themeToggle.firstElementChild.className = 'fa fa-moon';
+        //         localStorage.setItem('theme', JSON.stringify('light-mode'));
+        //         localStorage.setItem('icon', JSON.stringify('fa fa-moon'));
+        //     }
+
+        //     else {
+        //         themeToggle.firstElementChild.className = 'fa fa-sun';
+        //         localStorage.setItem('theme', JSON.stringify('root'));
+        //         localStorage.setItem('icon', JSON.stringify('fa fa-sun'));
+        //     }
+        // });
+
         themeToggle.addEventListener('click', () => {
             document.body.classList.toggle('light-mode');
 
             if (document.body.classList.contains('light-mode')) {
-                themeToggle.firstElementChild.className = 'fa fa-moon';
-                localStorage.setItem('theme', JSON.stringify('light-mode'));
-                localStorage.setItem('icon', JSON.stringify('fa fa-moon'));
+                theme =
+                {
+                    name: 'light-mode',
+                    icon: 'fa fa-moon',
+                }
+                localStorage.setItem('theme', JSON.stringify(theme));
+                themeToggle.firstElementChild.className = (theme.icon);
             }
 
             else {
-                themeToggle.firstElementChild.className = 'fa fa-sun';
-                localStorage.setItem('theme', JSON.stringify('root'));
-                localStorage.setItem('icon', JSON.stringify('fa fa-sun'));
+                theme = {
+                    name: 'root',
+                    icon: 'fa fa-sun',
+                }
+                themeToggle.firstElementChild.className = (theme.icon);
+                localStorage.setItem('theme', JSON.stringify(theme));
             }
         });
 
